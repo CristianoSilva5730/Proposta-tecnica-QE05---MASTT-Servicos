@@ -122,49 +122,60 @@
 
     /* Impressão A4 corrigida */
     @media print {
-      body {
-        background: white;
-        color: #111;
-      }
 
-      .no-print {
-        display: none !important;
+        body {
+          background: white !important;
+          color: #111 !important;
+        }
+      
+        .no-print {
+          display: none !important;
+        }
+      
+        header {
+          position: relative !important;
+          border-bottom: 2px solid #4f8c1f;
+        }
+      
+        /* IMPORTANTE: permitir quebra natural */
+        section {
+          break-inside: auto;
+          page-break-inside: auto;
+        }
+      
+        .card {
+          background: white !important;
+          border: 1px solid #ddd;
+          box-shadow: none;
+        }
+      
+        .divider {
+          background: #e6e6e6;
+        }
+      
+        .brand-green {
+          color: #4f8c1f !important;
+        }
+      
+        .with-watermark::after {
+          opacity: .08;
+          background-position: center center;
+        }
+      
+        table {
+          page-break-inside: auto;
+        }
+      
+        tr {
+          page-break-inside: avoid;
+          page-break-after: auto;
+        }
+      
+        @page {
+          size: A4;
+          margin: 16mm;
+        }
       }
-
-      header {
-        position: relative;
-        border-bottom: 2px solid #4f8c1f;
-      }
-
-      section {
-        break-inside: avoid;
-        page-break-inside: avoid;
-      }
-
-      .card {
-        background: white;
-        border: 1px solid #ddd;
-        box-shadow: none;
-      }
-
-      .divider {
-        background: #e6e6e6;
-      }
-
-      .brand-green {
-        color: #4f8c1f !important;
-      }
-
-      .with-watermark::after {
-        opacity: .08;
-        background-position: center center;
-      }
-
-      @page {
-        size: A4;
-        margin: 16mm;
-      }
-    }
   </style>
 </head>
 
