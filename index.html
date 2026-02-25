@@ -94,8 +94,10 @@
         display: none !important;
       }
     
-      /* REMOVE EFEITOS QUE QUEBRAM O PDF */
+      /* CAPA */
       .with-watermark {
+        background: white !important;
+        color: #111 !important;
         overflow: visible !important;
       }
     
@@ -103,6 +105,12 @@
         display: none !important;
       }
     
+      .with-watermark h1,
+      .with-watermark p {
+        color: #111 !important;
+      }
+    
+      /* CARDS */
       .card {
         background: white !important;
         border: 1px solid #ddd !important;
