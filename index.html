@@ -1,207 +1,412 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>MASTT Serviços — Proposta Técnica (QE05)</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>MASTT Serviços — Proposta Técnica (QE05)</title>
 
-<script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 
-<style>
-:root{
- --mastt-green:#8BC53F;
- --mastt-ink:#e9e9e9;
- --mastt-graphite:#111213;
- --mastt-surface:#0b0c0c;
- --mastt-muted:#c9c9c9;
-}
+  <style>
+    :root {
+      --mastt-green: #8BC53F;
+      --mastt-ink: #e9e9e9;
+      --mastt-graphite: #111213;
+      --mastt-surface: #0b0c0c;
+      --mastt-muted: #c9c9c9;
+    }
 
-.with-watermark{
- position: relative;
- overflow: hidden;
-}
-.with-watermark::after{
- content:"";
- position:absolute;
- inset:0;
- background-repeat:no-repeat;
- background-position: 70% 40%;
- background-size: 680px auto;
- opacity:.12;
- pointer-events:none;
-}
+    .with-watermark {
+      position: relative;
+      overflow: hidden;
+    }
 
-body{
- background:linear-gradient(180deg,var(--mastt-graphite),#000);
- color:var(--mastt-ink);
-}
+    .with-watermark::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-repeat: no-repeat;
+      background-position: 70% 40%;
+      background-size: 680px auto;
+      opacity: .12;
+      pointer-events: none;
+    }
 
-.brand-green{ color:var(--mastt-green); }
-.brand-bg{ background:var(--mastt-green); }
+    body {
+      background: linear-gradient(180deg, var(--mastt-graphite), #000);
+      color: var(--mastt-ink);
+    }
 
-.card{
- background:rgba(255,255,255,.02);
- border:1px solid rgba(255,255,255,.07);
- backdrop-filter:saturate(120%) blur(6px);
-}
+    .brand-green {
+      color: var(--mastt-green);
+    }
 
-.divider{
- height:1px;
- background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
-}
+    .brand-bg {
+      background: var(--mastt-green);
+    }
 
-table.mastt{
- width:100%;
- border-collapse:separate;
- border-spacing:0 10px;
-}
-table.mastt thead th{
- text-align:left;
- font-weight:700;
- color:#f3f3f3;
- padding:.75rem 1rem;
-}
-table.mastt tbody tr{
- background:rgba(255,255,255,.03);
-}
-table.mastt tbody td{
- padding:.85rem 1rem;
- vertical-align:top;
-}
+    .card {
+      background: rgba(255, 255, 255, .02);
+      border: 1px solid rgba(255, 255, 255, .07);
+      backdrop-filter: saturate(120%) blur(6px);
+    }
 
-/* iPhone */
-@supports (-webkit-touch-callout: none) {
- html, body {
-  overflow-x: hidden;
-  -webkit-text-size-adjust: 100%;
- }
- .hero-title {
-  font-size: clamp(1.6rem, 6.2vw, 2.25rem);
-  line-height: 1.2;
- }
- .hero-img {
-  width: min(72vw, 384px);
-  height: auto;
- }
- .with-watermark::after{
-  background-position: 50% 45%;
-  background-size: min(82vw, 680px) auto;
- }
- table.mastt {
-  table-layout: fixed;
- }
- table.mastt th:nth-child(2),
- table.mastt td:nth-child(2) {
-  word-break: break-word;
-  overflow-wrap: anywhere;
-  white-space: normal;
- }
-}
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .18), transparent);
+    }
 
-/* IMPRESSÃO CORRIGIDA */
-@media print{
- body{
-  background:white;
-  color:#111;
- }
+    table.mastt {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 10px;
+    }
 
- .no-print{
-  display:none !important;
- }
+    table.mastt thead th {
+      text-align: left;
+      font-weight: 700;
+      color: #f3f3f3;
+      padding: .75rem 1rem;
+    }
 
- header{
-  position:relative;
-  border-bottom:2px solid #4f8c1f;
- }
+    table.mastt tbody tr {
+      background: rgba(255, 255, 255, .03);
+    }
 
- section{
-  break-inside: avoid;
-  page-break-inside: avoid;
- }
+    table.mastt tbody td {
+      padding: .85rem 1rem;
+      vertical-align: top;
+    }
 
- .card{
-  background:white;
-  border:1px solid #ddd;
-  box-shadow:none;
- }
+    table.mastt tbody tr:hover {
+      background: rgba(255, 255, 255, .06);
+      transition: .2s;
+    }
 
- .divider{
-  background:#e6e6e6;
- }
+    /* iPhone */
+    @supports (-webkit-touch-callout: none) {
 
- .brand-green{
-  color:#4f8c1f !important;
- }
+      html,
+      body {
+        overflow-x: hidden;
+        -webkit-text-size-adjust: 100%;
+      }
 
- .with-watermark::after{
-  opacity:.08;
-  background-position:center center;
- }
+      .hero-title {
+        font-size: clamp(1.6rem, 6.2vw, 2.25rem);
+        line-height: 1.2;
+      }
 
- @page{
-  size:A4;
-  margin:16mm;
- }
-}
-</style>
+      .hero-img {
+        width: min(72vw, 384px);
+        height: auto;
+      }
+
+      .with-watermark::after {
+        background-position: 50% 45%;
+        background-size: min(82vw, 680px) auto;
+      }
+
+      table.mastt {
+        table-layout: fixed;
+      }
+
+      table.mastt th:nth-child(2),
+      table.mastt td:nth-child(2) {
+        word-break: break-word;
+        overflow-wrap: anywhere;
+        white-space: normal;
+      }
+    }
+
+    /* Impressão A4 corrigida */
+    @media print {
+      body {
+        background: white;
+        color: #111;
+      }
+
+      .no-print {
+        display: none !important;
+      }
+
+      header {
+        position: relative;
+        border-bottom: 2px solid #4f8c1f;
+      }
+
+      section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .card {
+        background: white;
+        border: 1px solid #ddd;
+        box-shadow: none;
+      }
+
+      .divider {
+        background: #e6e6e6;
+      }
+
+      .brand-green {
+        color: #4f8c1f !important;
+      }
+
+      .with-watermark::after {
+        opacity: .08;
+        background-position: center center;
+      }
+
+      @page {
+        size: A4;
+        margin: 16mm;
+      }
+    }
+  </style>
 </head>
 
 <body class="min-h-screen">
 
-<header class="sticky top-0 z-50 backdrop-blur bg-black/35 border-b border-white/10">
- <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-  <div class="flex items-center gap-3">
-   <img src="assets/logo-mastt.png" alt="MASTT Serviços" class="h-10 w-auto" />
-   <div class="text-sm leading-tight">
-    <div class="font-semibold tracking-wide">MASTT SERVIÇOS</div>
-    <div class="text-xs text-gray-300">Serviços Elétricos e Eletrônicos</div>
-   </div>
-  </div>
- </div>
-</header>
+  <header class="sticky top-0 z-50 backdrop-blur bg-black/35 border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="assets/logo-mastt.png" alt="MASTT Serviços" class="h-10 w-auto" />
+        <div class="text-sm leading-tight">
+          <div class="font-semibold tracking-wide">MASTT SERVIÇOS</div>
+          <div class="text-xs text-gray-300">Serviços Elétricos e Eletrônicos</div>
+        </div>
+      </div>
 
-<section class="with-watermark">
- <div class="max-w-6xl mx-auto px-4 py-14 sm:py-20">
-  <div class="grid md:grid-cols-[1.2fr_.8fr] gap-10 items-center">
-   <div>
-    <h1 class="hero-title text-3xl sm:text-5xl font-extrabold leading-tight">
-     Proposta Técnica<br>
-     <span class="brand-green">Painel QE05 – Casa de Máquinas 05</span>
-    </h1>
-   </div>
-   <div class="flex flex-col items-center md:items-end text-center md:text-right">
-    <p class="mb-4 text-gray-300 text-lg">
-     <span class="font-extrabold">Cliente: </span>
-     <span class="font-semibold">Shopping Partage Marabá</span>
-    </p>
-    <img src="assets/image001.png" alt="Ícone Partage Marabá"
-     class="hero-img w-40 sm:w-56 md:w-72 lg:w-96 h-auto max-w-full" />
-   </div>
-  </div>
+      <nav class="hidden sm:flex items-center gap-6 text-sm text-gray-200">
+        <a href="#escopo" class="hover:text-white">Escopo</a>
+        <a href="#condicoes" class="hover:text-white">Condições</a>
+        <a href="#cronograma" class="hover:text-white">Cronograma</a>
+        <a href="#garantia" class="hover:text-white">Garantia</a>
+        <a href="#valores" class="hover:text-white">Valores</a>
+        <a href="#contato" class="hover:text-white">Contato</a>
+      </nav>
+    </div>
+  </header>
 
-  <div class="mt-6 no-print">
-   <button onclick="window.print()"
-    class="px-4 py-2 rounded-lg brand-bg text-black font-semibold hover:brightness-110">
-    Salvar como PDF
-   </button>
-  </div>
- </div>
-</section>
+  <section class="with-watermark">
+    <div class="max-w-6xl mx-auto px-4 py-14 sm:py-20">
+      <div class="grid md:grid-cols-[1.2fr_.8fr] gap-10 items-center">
+        <div>
+          <h1 class="hero-title text-3xl sm:text-5xl font-extrabold leading-tight">
+            Proposta Técnica<br>
+            <span class="brand-green">Painel QE05 – Casa de Máquinas 05</span>
+          </h1>
+        </div>
 
-<!-- TODO O RESTANTE DO SEU CONTEÚDO (ESCOPOS, VALORES, GARANTIA ETC)
-PERMANECE EXATAMENTE COMO VOCÊ ENVIOU
-NENHUM DADO FOI ALTERADO -->
+        <div class="flex flex-col items-center md:items-end text-center md:text-right">
+          <p class="mb-4 text-gray-300 text-lg">
+            <span class="font-extrabold leading-tight">Cliente: </span>
+            <span class="font-semibold">Shopping Partage Marabá</span>
+          </p>
 
-<footer class="border-t border-white/10">
- <div class="max-w-6xl mx-auto px-4 py-6 text-xs text-gray-400 flex items-center justify-between">
-  <span>© <span id="y"></span> MASTT Serviços. Todos os direitos reservados.</span>
-  <span class="hidden sm:inline">Documento gerado para apresentação da Proposta Técnica — QE05 (Partage Marabá)</span>
- </div>
-</footer>
+          <img src="assets/image001.png" alt="Ícone Partage Marabá"
+            class="hero-img w-40 sm:w-56 md:w-72 lg:w-96 h-auto max-w-full" loading="lazy" decoding="async" />
+        </div>
+      </div>
 
-<script>
-document.getElementById('y').textContent = new Date().getFullYear();
-</script>
+      <div class="mt-6 flex flex-wrap gap-3 no-print">
+        <button onclick="window.print()"
+          class="px-4 py-2 rounded-lg brand-bg text-black font-semibold hover:brightness-110">
+          Salvar como PDF
+        </button>
+      </div>
+    </div>
+  </section>
+<main class="max-w-6xl mx-auto px-4 pb-24 space-y-12"> <!-- Escopo -->
+    <section id="escopo" class="card rounded-2xl p-6">
+      <h2 class="text-2xl font-bold mb-1">Escopo das Atividades</h2>
+      <div class="divider mb-6"></div>
+      <ol class="list-decimal pl-6 space-y-3">
+        <li>
+          <p class="font-semibold">Análise inicial e levantamento técnico</p>
+          <ul class="list-disc pl-6 text-gray-300">
+            <li>Verificação da alimentação até o disjuntor principal;</li>
+            <li>Avaliação da necessidade de troca da alimentação existente.</li>
+          </ul>
+        </li>
+        <li>
+          <p class="font-semibold">Atualização documental</p>
+          <ul class="list-disc pl-6 text-gray-300">
+            <li>Revisão e atualização dos arquivos em <span class="font-mono">.dwg</span> (diagramas elétricos).</li>
+          </ul>
+        </li>
+        <li>
+          <p class="font-semibold">Troca de cabos de potência</p>
+          <ul class="list-disc pl-6 text-gray-300">
+            <li>Substituição dos cabos de alimentação do disjuntor até os inversores;</li>
+            <li>Prensagem de terminais adequados.</li>
+          </ul>
+        </li>
+        <li>
+          <p class="font-semibold">Saída dos inversores</p>
+          <ul class="list-disc pl-6 text-gray-300">
+            <li>Substituição dos cabos da saída dos inversores até as borneiras do painel (se aplicável).</li>
+          </ul>
+        </li>
+        <li>
+          <p class="font-semibold">Infraestrutura do painel</p>
+          <ul class="list-disc pl-6 text-gray-300">
+            <li>Troca e reposição de canaletas;</li>
+            <li>Confecção de tags de identificação.</li>
+          </ul>
+        </li>
+        <li>
+          <p class="font-semibold">Instalação e comissionamento</p>
+          <ul class="list-disc pl-6 text-gray-300">
+            <li>Instalação e comissionamento dos inversores <span class="font-semibold">Siemens Sinamics V20 –
+                6SL3210-5BE31-5UV0</span>;</li>
+            <li>Parametrização conforme aplicação.</li>
+          </ul>
+        </li>
+        <li>
+          <p class="font-semibold">Comando e sinalização</p>
+          <ul class="list-disc pl-6 text-gray-300">
+            <li>Troca dos cabos de acionamento e controle, seguindo padrão do diagrama elétrico;</li>
+            <li>Inclusão de chaves seletoras de 3 posições (Manual, Desligado, Automático) em todos os acionamentos;
+            </li>
+            <li>Verificação da presença de botoeiras e sinalização (pilotos de indicação). Caso faltem, será fornecida
+              especificação para compra.</li>
+          </ul>
+        </li>
+      </ol>
+    </section> <!-- Condições e Premissas -->
+    <section id="condicoes" class="card rounded-2xl p-6">
+      <h2 class="text-2xl font-bold mb-1">Condições e Premissas</h2>
+      <div class="divider mb-6"></div>
+      <ul class="list-disc pl-6 space-y-2 text-gray-200">
+        <li>Será necessária visita técnica complementar em período noturno (23:00 às 07:00) para: <ul
+            class="list-disc pl-6 text-gray-300 mt-2">
+            <li>Especificar detalhadamente os componentes do painel;</li>
+            <li>Verificar cabeamento, dispositivos de proteção e instrumentação;</li>
+            <li>Realizar checklist e catalogação de equipamentos;</li>
+            <li>Fornecer lista de materiais para aquisição pelo contratante (cabos de potência e controle, botoeiras,
+              sinalizações, borneiras, dispositivos auxiliares, etc.).</li>
+          </ul>
+        </li>
+        <li class="mt-3"><span class="font-semibold">Observação importante:</span> esta proposta contempla apenas a
+          prestação de serviços; materiais, dispositivos e cabos deverão ser fornecidos pelo contratante.</li>
+      </ul>
+    </section> <!-- Cronograma -->
+    <section id="cronograma" class="card rounded-2xl p-6">
+      <h2 class="text-2xl font-bold mb-1">Cronograma Estimado</h2>
+      <div class="divider mb-6"></div>
+      <ul class="list-disc pl-6 text-gray-300 space-y-1">
+        <li><span class="font-semibold">1 dia</span> → Inspeção e levantamento técnico do painel QE05</li>
+        <li><span class="font-semibold">4 dias</span> → Execução (meta de 3 acionamentos/dia, para não comprometer
+          operação)</li>
+        <li><span class="font-semibold">2 dias</span> → Atualização documental (.dwg)</li>
+      </ul>
+      <p class="mt-3 text-gray-200"><span class="font-semibold">Total:</span> 7 dias de trabalho (23h às 07h, 8h/dia).
+      </p>
+    </section> <!-- Garantia -->
+    <section id="garantia" class="card rounded-2xl p-6">
+      <h2 class="text-2xl font-bold mb-1">Garantia</h2>
+      <div class="divider mb-6"></div>
+      <ul class="list-disc pl-6 text-gray-300 space-y-1">
+        <li><span class="font-semibold">Prazo:</span> 90 dias corridos após a conclusão e entrega do serviço.</li>
+        <li><span class="font-semibold">Escopo:</span> serviços executados (instalação, conexões, comissionamento e
+          atualização documental).</li>
+        <li><span class="font-semibold">Exclusões:</span> materiais fornecidos pelo contratante; alterações feitas por
+          terceiros; danos externos (surtos, curtos, falhas na rede).</li>
+        <li><span class="font-semibold">Compromisso:</span> falhas diretamente relacionadas à execução serão corrigidas
+          sem custo adicional durante a garantia.</li>
+      </ul>
+    </section> <!-- Valores -->
+    <section id="valores" class="card rounded-2xl p-6">
+      <h2 class="text-2xl font-bold mb-1">Valores Detalhados (Serviços)</h2>
+      <div class="divider mb-6"></div> <!-- Tabela responsiva -->
+      <div class="overflow-x-auto md:overflow-x-visible">
+        <table class="mastt w-full table-fixed">
+          <thead>
+            <tr>
+              <th class="w-16">Etapa</th>
+              <th class="whitespace-normal break-words">Descrição</th>
+              <th class="w-28">Valor (R$)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td class="whitespace-normal break-words">Inspeção e levantamento técnico do painel QE05</td>
+              <td>2.000,00</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td class="whitespace-normal break-words">Atualização documental (.dwg)</td>
+              <td>1.500,00</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td class="whitespace-normal break-words">Troca de cabos de alimentação e terminais</td>
+              <td>3.000,00</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td class="whitespace-normal break-words">Instalação e comissionamento de 2 inversores Siemens Sinamics
+                V20 – 6SL3210-5BE31-5UV0</td>
+              <td>6.000,00</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td class="whitespace-normal break-words">Troca de cabos de comando e instalação de chaves seletoras +
+                botoeiras/sinalização</td>
+              <td>1.800,00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div> <!-- Valor total -->
+      <div
+        class="mt-6 p-4 rounded-xl bg-white/5 border border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+        <div class="font-semibold">Valor Total da Prestação de Serviços</div>
+        <div class="text-2xl font-extrabold brand-green">R$ 14.300,00</div>
+      </div> <!-- Forma de pagamento -->
+      <div class="mt-4 text-gray-200">
+        <p class="font-semibold">Forma de Pagamento</p>
+        <ul class="list-disc pl-6 space-y-1">
+          <li>30% (R$ 4.290,00) → na assinatura da proposta;</li>
+          <li>70% (R$ 10.060,00) → após a conclusão dos serviços e entrega do relatório final.</li>
+        </ul>
+      </div>
+    </section> <!-- Contato -->
+    <section id="contato" class="card rounded-2xl p-6">
+      <h2 class="text-2xl font-bold mb-1">Contato</h2>
+      <div class="divider mb-6"></div>
+      <div class="grid sm:grid-cols-2 gap-6 text-gray-200">
+        <div>
+          <p class="font-semibold">MASTT Serviços Elétricos e Eletrônicos</p>
+          <p class="text-gray-300">CNPJ: 35.065.921/0001-17</p>
+          <p class="text-gray-300">Marabá – PA</p>
+        </div>
+        <div>
+          <p class="text-gray-300">Comercial: <span class="font-semibold">(94) 981667301 - Cristiano Silva / (94)
+              981120775 - Paulo Szkruc</span></p>
+          <p class="text-gray-300">E-mail: <span class="font-semibold">masttservico@gmail.com</span></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-4 py-6 text-xs text-gray-400 flex items-center justify-between">
+      <span>© <span id="y"></span> MASTT Serviços. Todos os direitos reservados.</span>
+      <span class="hidden sm:inline">Documento gerado para apresentação da Proposta Técnica — QE05 (Partage
+        Marabá)</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 
 </body>
+
 </html>
+
